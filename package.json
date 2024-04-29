@@ -5,7 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx src/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "yarn eslint 'src/**' --fix",
+      "yarn prettier --check 'src/**' --write",
+      "git add ."
+    ]
   },
   "keywords": [],
   "author": "",
@@ -16,6 +24,8 @@
     "eslint": "8.57",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "tsx": "^4.7.3",
     "typescript": "^5.4.5",
