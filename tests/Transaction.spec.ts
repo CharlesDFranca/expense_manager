@@ -1,6 +1,6 @@
 import { test, describe, expect } from "vitest";
 import { transactionDTO } from "../src/dtos/transactionDTO";
-import Income from "../src/entities/Income";
+import CreateTransaction from "../src/use-case/create-transaction-repository";
 
 const data: transactionDTO = {
   amount: 20,
@@ -11,7 +11,8 @@ const data: transactionDTO = {
 
 describe("tests with transaction", () => {
   test("create transaction income", () => {
-    const transaction = new Income(data);
+    const createTransaction = new CreateTransaction();
+    const transaction = createTransaction.execute(data);
     console.log(transaction);
     expect(transaction.data.description).toBe("salario");
   });
