@@ -6,7 +6,7 @@ export default class CreateIncomeTransactionUseCase {
   constructor(readonly transactionRepository: ITransactionRepository<Income>) {}
 
   execute(data: transactionDTO): Income[] {
-    const transaction = this.transactionRepository.save(data);
+    const transaction = this.transactionRepository.saveIncome(data);
     return transaction;
   }
 }

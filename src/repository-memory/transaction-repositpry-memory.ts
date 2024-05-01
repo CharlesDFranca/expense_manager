@@ -7,7 +7,7 @@ export default class TransactionRepositoryMemory
 {
   incomes: Income[] = [];
 
-  save(input: transactionDTO): Income[] {
+  saveIncome(input: transactionDTO): Income[] {
     const transaction = new Income(input);
     this.incomes.push(transaction);
     return this.incomes;
