@@ -1,6 +1,6 @@
 import { test, describe, expect } from "vitest";
 import { transactionDTO } from "../src/dtos/transactionDTO";
-import CreateTransactionUseCase from "../src/use-case/create-transaction-repository";
+import CreateTransactionUseCase from "../src/use-case/income/create-income-transaction-repository";
 import TransactionRepositoryMemory from "../src/repository-memory/transaction-repositpry-memory";
 import Expense from "../src/entities/Expense";
 
