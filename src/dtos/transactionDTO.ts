@@ -1,7 +1,7 @@
 export interface transactionDTO {
   amount: number;
-  describe: string;
-  type: string;
+  description: string;
   date: Date;
+  type?: string;
   paymentMethod: string;
 }
