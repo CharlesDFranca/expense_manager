@@ -3,9 +3,7 @@ import Expense from "../../entities/Expense";
 import ITransactionRepository from "../../repository/transaction-repository";
 
 export default class CreateExpenseTransactionUseCase {
-  constructor(
-    readonly transactionRepository: ITransactionRepository<Expense>,
-  ) {}
+  constructor(readonly transactionRepository: ITransactionRepository) {}
 
   execute(data: transactionDTO): Expense {
     const transaction = new Expense(data);

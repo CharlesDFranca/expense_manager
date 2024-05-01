@@ -3,7 +3,7 @@ import Income from "../entities/Income";
 import ITransactionRepository from "../repository/transaction-repository";
 
 export default class TransactionRepositoryMemory
-  implements ITransactionRepository<Income>
+  implements ITransactionRepository
 {
   incomes: Income[] = [];
 
