@@ -2,7 +2,7 @@ import { test, describe, expect } from "vitest";
 import { transactionDTO } from "../src/dtos/transactionDTO";
 import CreateIncomeTransactionUseCase from "../src/use-case/income/create-income-transaction-repository";
 import TransactionRepositoryMemory from "../src/repository-memory/transaction-repositpry-memory";
-import Expense from "../src/entities/Expense";
+import CreateExpenseTransactionUseCase from "../src/use-case/expense/create-expense-transaction-repository";
 
 const income: transactionDTO = {
   amount: 20,
@@ -25,11 +25,17 @@ describe("tests with transaction", () => {
       transactionRepository,
     );
     const transaction = createTransaction.execute(income);
+    console.log(transaction);
     expect(transaction[0].data.paymentMethod).toBe("pix");
   });
 
   test("create transaction expense", () => {
-    const transaction = new Expense(expense);
-    expect(transaction.data.type).toBe("expense");
+    const transactionRepository = new TransactionRepositoryMemory();
+    const createTransaction = new CreateExpenseTransactionUseCase(
+      transactionRepository,
+    );
+    const transaction = createTransaction.execute(expense);
+    console.log(transaction);
+    expect(transaction[0].data.paymentMethod).toBe("pix");
   });
 });

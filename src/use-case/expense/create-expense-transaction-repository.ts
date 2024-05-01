@@ -5,8 +5,8 @@ import ITransactionRepository from "../../repository/transaction-repository";
 export default class CreateExpenseTransactionUseCase {
   constructor(readonly transactionRepository: ITransactionRepository) {}
 
-  execute(data: transactionDTO): Expense {
-    const transaction = new Expense(data);
+  execute(data: transactionDTO): Expense[] {
+    const transaction = this.transactionRepository.saveExpense(data);
     return transaction;
   }
 }
