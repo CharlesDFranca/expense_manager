@@ -1,6 +1,6 @@
 import { test, describe, expect } from "vitest";
 import { transactionDTO } from "../src/dtos/transactionDTO";
-import CreateTransactionUseCase from "../src/use-case/income/create-income-transaction-repository";
+import CreateIncomeTransactionUseCase from "../src/use-case/income/create-income-transaction-repository";
 import TransactionRepositoryMemory from "../src/repository-memory/transaction-repositpry-memory";
 import Expense from "../src/entities/Expense";
 
@@ -21,7 +21,7 @@ const expense: transactionDTO = {
 describe("tests with transaction", () => {
   test("create transaction income", () => {
     const transactionRepository = new TransactionRepositoryMemory();
-    const createTransaction = new CreateTransactionUseCase(
+    const createTransaction = new CreateIncomeTransactionUseCase(
       transactionRepository,
     );
     const transaction = createTransaction.execute(income);
