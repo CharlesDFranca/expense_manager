@@ -5,6 +5,7 @@ import CreateExpenseTransactionUseCase from "../src/use-case/expense/create-expe
 import { randomUUID } from "crypto";
 import IncomeRepositoryMemory from "../src/repository-memory/income-repository-memory";
 import ExpenseRepositoryMemory from "../src/repository-memory/expense-repository-memory";
+import TransactionRepositoryMemory from "../src/repository-memory/transaction-repositpry-memory";
 
 const income: ITransactionDTO = {
   id: randomUUID(),
@@ -24,16 +25,18 @@ const expense: ITransactionDTO = {
 
 describe("tests with transaction", () => {
   test("create transaction income", () => {
+    const transactionRepository = new TransactionRepositoryMemory();
     const incomeRepository = new IncomeRepositoryMemory();
-    const createTransaction = new CreateIncomeTransactionUseCase(incomeRepository);
+    const createTransaction = new CreateIncomeTransactionUseCase(incomeRepository, transactionRepository);
     createTransaction.execute(income);
     const transaction = createTransaction.execute(income);
     expect(transaction.data.paymentMethod).toBe("pix");
   });
 
   test("create transaction expense", () => {
+    const transactionRepository = new TransactionRepositoryMemory();
     const expenseRepository = new ExpenseRepositoryMemory();
-    const createTransaction = new CreateExpenseTransactionUseCase(expenseRepository);
+    const createTransaction = new CreateExpenseTransactionUseCase(expenseRepository, transactionRepository);
     createTransaction.execute(expense);
     const transaction = createTransaction.execute(expense);
     expect(transaction.data.paymentMethod).toBe("pix");
