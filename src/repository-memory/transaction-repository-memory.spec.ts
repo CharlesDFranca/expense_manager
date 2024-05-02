@@ -3,9 +3,9 @@ import TransactionRepositoryMemory from "./transaction-repositpry-memory";
 import CreateIncomeTransactionUseCase from "../use-case/income/create-income-transaction-repository";
 import CreateExpenseTransactionUseCase from "../use-case/expense/create-expense-transaction-repository";
 import { randomUUID } from "crypto";
-import { transactionDTO } from "../dtos/transactionDTO";
+import { ITransactionDTO } from "../dtos/transactionDTO";
 
-const income: transactionDTO = {
+const income: ITransactionDTO = {
   id: randomUUID(),
   amount: 20,
   description: "salario",
@@ -13,7 +13,7 @@ const income: transactionDTO = {
   paymentMethod: "pix",
 };
 
-const expense: transactionDTO = {
+const expense: ITransactionDTO = {
   id: randomUUID(),
   amount: 20,
   description: "fast-food",

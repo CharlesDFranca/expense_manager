@@ -1,11 +1,11 @@
 import { test, describe, expect } from "vitest";
-import { transactionDTO } from "../src/dtos/transactionDTO";
+import { ITransactionDTO } from "../src/dtos/transactionDTO";
 import CreateIncomeTransactionUseCase from "../src/use-case/income/create-income-transaction-repository";
 import TransactionRepositoryMemory from "../src/repository-memory/transaction-repositpry-memory";
 import CreateExpenseTransactionUseCase from "../src/use-case/expense/create-expense-transaction-repository";
 import { randomUUID } from "crypto";
 
-const income: transactionDTO = {
+const income: ITransactionDTO = {
   id: randomUUID(),
   amount: 20,
   description: "salario",
@@ -13,7 +13,7 @@ const income: transactionDTO = {
   paymentMethod: "pix",
 };
 
-const expense: transactionDTO = {
+const expense: ITransactionDTO = {
   id: randomUUID(),
   amount: 20,
   description: "fast-food",

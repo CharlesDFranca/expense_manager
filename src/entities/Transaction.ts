@@ -1,5 +1,5 @@
-import { transactionDTO } from "../dtos/transactionDTO";
+import { ITransactionDTO } from "../dtos/transactionDTO";
 
 export default class Transaction {
-  constructor(readonly data: transactionDTO) {}
+  constructor(readonly data: ITransactionDTO) {}
 }
