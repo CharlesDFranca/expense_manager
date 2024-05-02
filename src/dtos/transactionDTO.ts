@@ -1,3 +1,6 @@
+import Expense from "../entities/Expense";
+import Income from "../entities/Income";
+
 export interface ITransactionDTO {
   id: string;
   amount: number;
@@ -6,3 +9,5 @@ export interface ITransactionDTO {
   type?: string;
   paymentMethod: string;
 }
+
+export type TTransactionType = (Income & Expense) | Income | Expense;

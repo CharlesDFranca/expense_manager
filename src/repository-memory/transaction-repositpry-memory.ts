@@ -1,4 +1,4 @@
-import { ITransactionDTO } from "../dtos/transactionDTO";
+import { ITransactionDTO, TTransactionType } from "../dtos/transactionDTO";
 import Expense from "../entities/Expense";
 import Income from "../entities/Income";
 import ITransactionRepository from "../repository/transaction-repository";
@@ -6,7 +6,7 @@ import ITransactionRepository from "../repository/transaction-repository";
 export default class TransactionRepositoryMemory implements ITransactionRepository {
   incomes: Income[] = [];
   expenses: Expense[] = [];
-  transactions: (Income & Expense)[] = [];
+  transactions: TTransactionType[] = [];
 
   saveIncome(input: ITransactionDTO): Income[] {
     const transaction = new Income(input);
@@ -22,7 +22,7 @@ export default class TransactionRepositoryMemory implements ITransactionReposito
     return this.expenses;
   }
 
-  getAllTransactions(): (Income & Expense)[] {
+  getAllTransactions(): TTransactionType[] {
     return this.transactions;
   }
 }
