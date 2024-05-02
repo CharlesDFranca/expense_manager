@@ -34,15 +34,17 @@ describe("unitary test at transaction repository memory", () => {
     const createExpenseTransaction = new CreateExpenseTransactionUseCase(expenseRepository);
     const getAllTransactions = new GetAllTransactionsUseCase(transactionRepository);
 
-    createIncomeTransaction.execute(income);
-    createExpenseTransaction.execute(expense);
-    createExpenseTransaction.execute(expense);
+    const transactionIncome = createIncomeTransaction.execute(income);
+    const transactionExpense = createExpenseTransaction.execute(expense);
+
+    transactionRepository.setTransaction(transactionExpense);
+    transactionRepository.setTransaction(transactionIncome);
 
     const allTransactions = getAllTransactions.execute();
 
-    transactionRepository.getBalance();
+    const balance = transactionRepository.getBalance();
 
-    console.log(allTransactions);
+    console.log({ allTransactions, balance });
 
     expect(typeof allTransactions).toBe("object");
   });
