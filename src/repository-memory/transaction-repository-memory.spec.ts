@@ -32,10 +32,13 @@ describe("unitary test at transaction repository memory", () => {
 
     createIncomeTransaction.execute(income);
     createExpenseTransaction.execute(expense);
+    createExpenseTransaction.execute(expense);
 
     const allTransactions = getAllTransactions.execute();
 
-    console.log(allTransactions);
+    const balance = transactionRepository.getBalance();
+
+    console.log(balance);
 
     expect(typeof allTransactions).toBe("object");
   });

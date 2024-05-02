@@ -25,4 +25,20 @@ export default class TransactionRepositoryMemory implements ITransactionReposito
   getAllTransactions(): TTransactionType[] {
     return this.transactions;
   }
+
+  getBalance(): number {
+    const transactionValues = this.transactions.map((transaction) => {
+      if (transaction.data.type === "income") {
+        return transaction.data.amount;
+      }
+
+      return -transaction.data.amount;
+    });
+
+    const balance = transactionValues.reduce((accumulator, value) => {
+      return accumulator + value;
+    }, 0);
+
+    return balance;
+  }
 }
