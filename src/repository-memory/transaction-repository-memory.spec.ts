@@ -7,6 +7,7 @@ import { ITransactionDTO } from "../dtos/transactionDTO";
 import GetAllTransactionsUseCase from "../use-case/transaction/get-all-transaction-repository";
 import IncomeRepositoryMemory from "./income-repository-memory";
 import ExpenseRepositoryMemory from "./expense-repository-memory";
+import SetTransactionUseCase from "../use-case/transaction/set-transaction-use-case";
 
 const income: ITransactionDTO = {
   id: randomUUID(),
@@ -33,12 +34,13 @@ describe("unitary test at transaction repository memory", () => {
     const createIncomeTransaction = new CreateIncomeTransactionUseCase(incomeRepository);
     const createExpenseTransaction = new CreateExpenseTransactionUseCase(expenseRepository);
     const getAllTransactions = new GetAllTransactionsUseCase(transactionRepository);
+    const setTransaction = new SetTransactionUseCase(transactionRepository);
 
     const transactionIncome = createIncomeTransaction.execute(income);
     const transactionExpense = createExpenseTransaction.execute(expense);
 
-    transactionRepository.setTransaction(transactionExpense);
-    transactionRepository.setTransaction(transactionIncome);
+    setTransaction.execute(transactionExpense);
+    setTransaction.execute(transactionIncome);
 
     const allTransactions = getAllTransactions.execute();
 
