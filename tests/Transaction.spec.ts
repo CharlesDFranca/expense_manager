@@ -24,21 +24,21 @@ const expense: transactionDTO = {
 describe("tests with transaction", () => {
   test("create transaction income", () => {
     const transactionRepository = new TransactionRepositoryMemory();
-    const createTransaction = new CreateIncomeTransactionUseCase(
-      transactionRepository,
-    );
+    const createTransaction = new CreateIncomeTransactionUseCase(transactionRepository);
+    createTransaction.execute(income);
+    const allTransactions = transactionRepository.getAllTransactions();
     const transaction = createTransaction.execute(income);
-    console.log(transaction);
+    console.log(allTransactions);
     expect(transaction[0].data.paymentMethod).toBe("pix");
   });
 
   test("create transaction expense", () => {
     const transactionRepository = new TransactionRepositoryMemory();
-    const createTransaction = new CreateExpenseTransactionUseCase(
-      transactionRepository,
-    );
+    const createTransaction = new CreateExpenseTransactionUseCase(transactionRepository);
+    createTransaction.execute(expense);
+    const allTransactions = transactionRepository.getAllTransactions();
     const transaction = createTransaction.execute(expense);
-    console.log(transaction);
+    console.log(allTransactions);
     expect(transaction[0].data.paymentMethod).toBe("pix");
   });
 });
