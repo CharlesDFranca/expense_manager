@@ -1,9 +1,5 @@
-import { ITransactionDTO, TTransactionType } from "../dtos/transactionDTO";
-import Expense from "../entities/Expense";
-import Income from "../entities/Income";
+import { TTransactionType } from "../dtos/transactionDTO";
 
 export default interface ITransactionRepository {
-  saveIncome(input: ITransactionDTO): Income[];
-  saveExpense(input: ITransactionDTO): Expense[];
   getAllTransactions(): TTransactionType[];
 }

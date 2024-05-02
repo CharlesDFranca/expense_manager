@@ -5,6 +5,8 @@ import CreateExpenseTransactionUseCase from "../use-case/expense/create-expense-
 import { randomUUID } from "crypto";
 import { ITransactionDTO } from "../dtos/transactionDTO";
 import GetAllTransactionsUseCase from "../use-case/transaction/get-all-transaction-repository";
+import IncomeRepositoryMemory from "./income-repository-memory";
+import ExpenseRepositoryMemory from "./expense-repository-memory";
 
 const income: ITransactionDTO = {
   id: randomUUID(),
@@ -25,9 +27,11 @@ const expense: ITransactionDTO = {
 describe("unitary test at transaction repository memory", () => {
   test("getAllTransactions", () => {
     const transactionRepository = new TransactionRepositoryMemory();
+    const incomeRepository = new IncomeRepositoryMemory();
+    const expenseRepository = new ExpenseRepositoryMemory();
 
-    const createIncomeTransaction = new CreateIncomeTransactionUseCase(transactionRepository);
-    const createExpenseTransaction = new CreateExpenseTransactionUseCase(transactionRepository);
+    const createIncomeTransaction = new CreateIncomeTransactionUseCase(incomeRepository);
+    const createExpenseTransaction = new CreateExpenseTransactionUseCase(expenseRepository);
     const getAllTransactions = new GetAllTransactionsUseCase(transactionRepository);
 
     createIncomeTransaction.execute(income);
@@ -36,9 +40,9 @@ describe("unitary test at transaction repository memory", () => {
 
     const allTransactions = getAllTransactions.execute();
 
-    const balance = transactionRepository.getBalance();
+    transactionRepository.getBalance();
 
-    console.log(balance);
+    console.log(allTransactions);
 
     expect(typeof allTransactions).toBe("object");
   });
