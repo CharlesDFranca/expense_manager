@@ -28,7 +28,7 @@ describe("tests with transaction", () => {
     const createTransaction = new CreateIncomeTransactionUseCase(incomeRepository);
     createTransaction.execute(income);
     const transaction = createTransaction.execute(income);
-    expect(transaction[0].data.paymentMethod).toBe("pix");
+    expect(transaction.data.paymentMethod).toBe("pix");
   });
 
   test("create transaction expense", () => {
@@ -36,6 +36,6 @@ describe("tests with transaction", () => {
     const createTransaction = new CreateExpenseTransactionUseCase(expenseRepository);
     createTransaction.execute(expense);
     const transaction = createTransaction.execute(expense);
-    expect(transaction[0].data.paymentMethod).toBe("pix");
+    expect(transaction.data.paymentMethod).toBe("pix");
   });
 });
