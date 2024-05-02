@@ -3,10 +3,10 @@ import Expense from "../../entities/Expense";
 import IExpenseRepository from "../../repository/expense-repository";
 
 export default class CreateExpenseTransactionUseCase {
-  constructor(readonly transactionRepository: IExpenseRepository) {}
+  constructor(readonly expenseRepository: IExpenseRepository) {}
 
   execute(data: ITransactionDTO): Expense {
-    const transaction = this.transactionRepository.saveExpense(data);
+    const transaction = this.expenseRepository.saveExpense(data);
     return transaction;
   }
 }
