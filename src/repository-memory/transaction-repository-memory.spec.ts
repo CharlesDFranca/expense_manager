@@ -4,7 +4,7 @@ import CreateIncomeTransactionUseCase from "../use-case/income/create-income-tra
 import CreateExpenseTransactionUseCase from "../use-case/expense/create-expense-transaction-repository";
 import { randomUUID } from "crypto";
 import { ITransactionDTO } from "../dtos/transactionDTO";
-import GetAllTransactionsUseCase from "../use-case/transaction/get-all-transaction-repository";
+import GetAllTransactionsUseCase from "../use-case/transaction/get-all-transactions-use-case";
 import IncomeRepositoryMemory from "./income-repository-memory";
 import ExpenseRepositoryMemory from "./expense-repository-memory";
 // import SetTransactionUseCase from "../use-case/transaction/set-transaction-use-case";
@@ -36,6 +36,13 @@ describe("unitary test at transaction repository memory", () => {
     const getAllTransactions = new GetAllTransactionsUseCase(transactionRepository);
 
     createIncomeTransaction.execute(income);
+    createIncomeTransaction.execute(income);
+    createIncomeTransaction.execute(income);
+    createIncomeTransaction.execute(income);
+    createIncomeTransaction.execute(income);
+    createIncomeTransaction.execute(income);
+    createIncomeTransaction.execute(income);
+
     createExpenseTransaction.execute(expense);
 
     const allTransactions = getAllTransactions.execute();
