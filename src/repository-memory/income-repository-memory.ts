@@ -10,4 +10,12 @@ export default class IncomeRepositoryMemory implements IIncomeRepository {
     this.incomes.push(transaction);
     return transaction;
   }
+
+  getTotalIncomeValue(): number {
+    const totalIncomeValue = this.incomes
+      .map((income) => income.data.amount)
+      .reduce((accumulator, value) => accumulator + value, 0);
+
+    return totalIncomeValue;
+  }
 }
