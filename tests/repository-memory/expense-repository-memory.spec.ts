@@ -4,6 +4,7 @@ import CreateExpenseTransactionUseCase from "../../src/use-case/expense/create-e
 import { randomUUID } from "crypto";
 import { ITransactionDTO } from "../../src/dtos/transactionDTO";
 import ExpenseRepositoryMemory from "../../src/repository-memory/expense-repository-memory";
+import GetTotalExpenseValueUseCase from "../../src/use-case/expense/get-total-income-value-use-case";
 
 const expense: ITransactionDTO = {
   id: randomUUID(),
@@ -27,8 +28,10 @@ describe("unit tests of the ExpenseRepositoryMemory class", () => {
 
   test("get total expense value", () => {
     const expenseRepository = new ExpenseRepositoryMemory();
-    const totalIncomeValue = expenseRepository.getTotalExpenseValue();
+    const getTotalExpenseValue = new GetTotalExpenseValueUseCase(expenseRepository);
 
-    expect(totalIncomeValue >= 20).toBeFalsy();
+    const totalExpenseValue = getTotalExpenseValue.execute();
+
+    expect(totalExpenseValue >= 20).toBeFalsy();
   });
 });
