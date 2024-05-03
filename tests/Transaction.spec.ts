@@ -1,7 +1,7 @@
 import { test, describe, expect } from "vitest";
 import { ITransactionDTO } from "../src/dtos/transactionDTO";
-import CreateIncomeTransactionUseCase from "../src/use-case/income/create-income-transaction-repository";
-import CreateExpenseTransactionUseCase from "../src/use-case/expense/create-expense-transaction-repository";
+import CreateIncomeTransactionUseCase from "../src/use-case/income/create-income-transaction-use-case";
+import CreateExpenseTransactionUseCase from "../src/use-case/expense/create-expense-transaction-use-case";
 import { randomUUID } from "crypto";
 import IncomeRepositoryMemory from "../src/repository-memory/income-repository-memory";
 import ExpenseRepositoryMemory from "../src/repository-memory/expense-repository-memory";
