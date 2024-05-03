@@ -15,10 +15,8 @@ export default class TransactionRepositoryMemory implements ITransactionReposito
   getBalance(): number {
     const transactionValues = this.transactions.map((transaction) => {
       if (transaction.data.type === "income") {
-        console.log(transaction);
         return transaction.data.amount;
       }
-      console.log(transaction);
       return -transaction.data.amount;
     });
 
