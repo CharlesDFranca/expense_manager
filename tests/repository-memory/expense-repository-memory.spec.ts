@@ -24,4 +24,11 @@ describe("unit tests of the ExpenseRepositoryMemory class", () => {
 
     expect(expenseTransaction.data.description).toBe("fast-food");
   });
+
+  test("get total expense value", () => {
+    const expenseRepository = new ExpenseRepositoryMemory();
+    const totalIncomeValue = expenseRepository.getTotalExpenseValue();
+
+    expect(totalIncomeValue >= 20).toBeFalsy();
+  });
 });

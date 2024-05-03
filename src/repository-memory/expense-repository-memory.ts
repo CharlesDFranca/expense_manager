@@ -10,4 +10,12 @@ export default class ExpenseRepositoryMemory implements IExpenseRepository {
     this.expenses.push(transaction);
     return transaction;
   }
+
+  getTotalExpenseValue(): number {
+    const totalExpenseValue = this.expenses
+      .map((expense) => expense.data.amount)
+      .reduce((accumulator, value) => accumulator + value, 0);
+
+    return totalExpenseValue;
+  }
 }
