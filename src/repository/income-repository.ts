@@ -3,4 +3,5 @@ import Income from "../entities/Income";
 
 export default interface IIncomeRepository {
   saveIncome(input: ITransactionDTO): Income;
+  getTotalIncomeValue(): number;
 }
