@@ -4,7 +4,7 @@ import CreateExpenseTransactionUseCase from "../../src/use-case/expense/create-e
 import { randomUUID } from "crypto";
 import { ITransactionDTO } from "../../src/dtos/transactionDTO";
 import ExpenseRepositoryMemory from "../../src/repository-memory/expense-repository-memory";
-import GetTotalExpenseValueUseCase from "../../src/use-case/expense/get-total-income-value-use-case";
+import GetTotalExpenseValueUseCase from "../../src/use-case/expense/get-total-expense-value-use-case";
 
 const expense: ITransactionDTO = {
   id: randomUUID(),
