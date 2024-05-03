@@ -11,6 +11,10 @@ export default class ExpenseRepositoryMemory implements IExpenseRepository {
     return transaction;
   }
 
+  getAllExpenseTransactions(): Expense[] {
+    return this.expenses;
+  }
+
   getTotalExpenseValue(): number {
     const totalExpenseValue = this.expenses
       .map((expense) => expense.data.amount)
