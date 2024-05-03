@@ -5,7 +5,7 @@ import CreateExpenseTransactionUseCase from "../src/use-case/expense/create-expe
 import { randomUUID } from "crypto";
 import IncomeRepositoryMemory from "../src/repository-memory/income-repository-memory";
 import ExpenseRepositoryMemory from "../src/repository-memory/expense-repository-memory";
-import TransactionRepositoryMemory from "../src/repository-memory/transaction-repositpry-memory";
+import TransactionRepositoryMemory from "../src/repository-memory/transaction-repository-memory";
 
 const income: ITransactionDTO = {
   id: randomUUID(),

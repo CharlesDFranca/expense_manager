@@ -1,6 +1,6 @@
 import { test, describe, expect } from "vitest";
 import { randomUUID } from "crypto";
-import TransactionRepositoryMemory from "../../src/repository-memory/transaction-repositpry-memory";
+import TransactionRepositoryMemory from "../../src/repository-memory/transaction-repository-memory";
 import IncomeRepositoryMemory from "../../src/repository-memory/income-repository-memory";
 import CreateIncomeTransactionUseCase from "../../src/use-case/income/create-income-transaction-use-case";
 import { ITransactionDTO } from "../../src/dtos/transactionDTO";

@@ -1,5 +1,5 @@
 import { test, describe, expect } from "vitest";
-import TransactionRepositoryMemory from "../../src/repository-memory/transaction-repositpry-memory";
+import TransactionRepositoryMemory from "../../src/repository-memory/transaction-repository-memory";
 import CreateIncomeTransactionUseCase from "../../src/use-case/income/create-income-transaction-use-case";
 import CreateExpenseTransactionUseCase from "../../src/use-case/expense/create-expense-transaction-use-case";
 import { randomUUID } from "crypto";
