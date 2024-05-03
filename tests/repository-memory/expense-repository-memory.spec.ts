@@ -5,6 +5,7 @@ import { randomUUID } from "crypto";
 import { ITransactionDTO } from "../../src/dtos/transactionDTO";
 import ExpenseRepositoryMemory from "../../src/repository-memory/expense-repository-memory";
 import GetTotalExpenseValueUseCase from "../../src/use-case/expense/get-total-expense-value-use-case";
+import GetAllExpenseTransactionsUseCase from "../../src/use-case/expense/get-all-expense-transaction-use-case";
 
 const expense: ITransactionDTO = {
   id: randomUUID(),
@@ -24,6 +25,15 @@ describe("unit tests of the ExpenseRepositoryMemory class", () => {
     const expenseTransaction = createExpenseTransaction.execute(expense);
 
     expect(expenseTransaction.data.description).toBe("fast-food");
+  });
+
+  test("get all expenses", () => {
+    const expenseRepository = new ExpenseRepositoryMemory();
+    const getAllExpenseTransactions = new GetAllExpenseTransactionsUseCase(expenseRepository);
+
+    const allExpenses = getAllExpenseTransactions.execute();
+
+    expect(allExpenses).toBeTypeOf("object");
   });
 
   test("get total expense value", () => {

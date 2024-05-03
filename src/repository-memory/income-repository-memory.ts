@@ -11,6 +11,10 @@ export default class IncomeRepositoryMemory implements IIncomeRepository {
     return transaction;
   }
 
+  getAllIncomeTransactions(): Income[] {
+    return this.incomes;
+  }
+
   getTotalIncomeValue(): number {
     const totalIncomeValue = this.incomes
       .map((income) => income.data.amount)

@@ -5,6 +5,7 @@ import IncomeRepositoryMemory from "../../src/repository-memory/income-repositor
 import CreateIncomeTransactionUseCase from "../../src/use-case/income/create-income-transaction-use-case";
 import { ITransactionDTO } from "../../src/dtos/transactionDTO";
 import GetTotalIncomeValueUseCase from "../../src/use-case/income/get-total-income-value-use-case";
+import GetAllIncomeTransactionsUseCase from "../../src/use-case/income/get-all-income-transanction-use-case";
 
 const income: ITransactionDTO = {
   id: randomUUID(),
@@ -24,6 +25,15 @@ describe("unit tests of the IncomeRepositoryMemory class", () => {
     const incomeTransaction = createIncomeTransaction.execute(income);
 
     expect(incomeTransaction.data.paymentMethod).toBe("pix");
+  });
+
+  test("get all income", () => {
+    const incomeRepository = new IncomeRepositoryMemory();
+    const getAllIncomeTransactions = new GetAllIncomeTransactionsUseCase(incomeRepository);
+
+    const allIncome = getAllIncomeTransactions.execute();
+
+    expect(allIncome).toBeTypeOf("object");
   });
 
   test("get total income value", () => {
