@@ -43,4 +43,17 @@ describe("unit tests of the IncomeRepositoryMemory class", () => {
 
     expect(totalIncomeValue >= 20).toBeFalsy();
   });
+
+  test("update amount", () => {
+    const transactionRepository = new TransactionRepositoryMemory();
+    const incomeRepository = new IncomeRepositoryMemory();
+    const createIncomeTransaction = new CreateIncomeTransactionUseCase(incomeRepository, transactionRepository);
+    const incomeTransaction = createIncomeTransaction.execute(income);
+
+    expect(incomeTransaction.data.amount).toBeGreaterThanOrEqual(10);
+
+    incomeTransaction.updateAmount(1000);
+
+    expect(incomeTransaction.data.amount).toBeGreaterThanOrEqual(1000);
+  });
 });
