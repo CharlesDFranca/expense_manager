@@ -44,4 +44,17 @@ describe("unit tests of the ExpenseRepositoryMemory class", () => {
 
     expect(totalExpenseValue >= 20).toBeFalsy();
   });
+
+  test("update amount", () => {
+    const transactionRepository = new TransactionRepositoryMemory();
+    const expenseRepository = new ExpenseRepositoryMemory();
+    const createExpenseTransaction = new CreateExpenseTransactionUseCase(expenseRepository, transactionRepository);
+    const expenseTransaction = createExpenseTransaction.execute(expense);
+
+    expect(expenseTransaction.data.amount).toBeGreaterThanOrEqual(10);
+
+    expenseTransaction.updateAmount(1000);
+
+    expect(expenseTransaction.data.amount).toBeGreaterThanOrEqual(1000);
+  });
 });

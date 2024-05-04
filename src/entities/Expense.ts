@@ -6,4 +6,8 @@ export default class Expense extends Transaction {
     super(data);
     this.data.type = "expense";
   }
+
+  updateAmount(amount: number): void {
+    this.data.amount = amount;
+  }
 }
